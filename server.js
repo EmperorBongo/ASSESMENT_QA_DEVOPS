@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const bots = require("./src/botsData");
 const shuffle = require("./src/shuffle");
 
@@ -9,6 +10,16 @@ const playerRecord = {
 const app = express();
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+var Rollbar = require("rollbar");
+var rollbar = new Rollbar({
+  accessToken: "",
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+});
+  c 
+rollbar.log("Hello Duel Duo!");
 
 // Add up the total health of all the robots
 const calculateTotalHealth = (robots) =>
